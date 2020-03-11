@@ -1,1 +1,76 @@
+= Yazılım Hakkında Genel Bilgiler [[Başlangıç]] 
 
+
+
+=== Linux Hakkında  Bilgiler 
+image::indir.jpg[]
+
+. Linux'un Desteklediği Donanımlar
+* Linux şu anda başta IBM-PC uyumlu kişisel bilgisayarlar olmak üzere Apple, Atari ve Amiga gibi 68000 tabanlı bilgisayarlar üzerinde, Sun Sparc işlemcili iş istasyonları, Alpha işlemcili kişisel bilgisayarlar, MIPS, PowerPC, HP PA-RISC ve ARM mimarilerinde çalışmaktadır.
+* Teorik olarak 4 Gbyte'a kadar RAM desteklenmektedir.
+* Birçok 10 ve 100 Mbit ethernet kartı, ISDN, ATM, FDDI, SLIP, CSLIP, PPP desteği verilmektedir.
+* Başta SoundBlaster, Gravis Ultrasound olmak üzere birçok ses kartı desteklenmektedir.
+* AT uyumlu diskler (IDE, EIDE ve 16 bitlik MFM,RLL veya ESDI) desteklenmektedir. Kontrol kartına uyumlu destek bulunduğu sürece SCSI diskler ve diğer cihazlar desteklenmektedir.
+[NOTE]
+ Detaylı bilgiye  ulaşmak için http://www.belgeler.org/lis/archive-tlkg-lis-1.html[Linux] adresini ziyaret ediniz.
+. Linux'un Kullanım Amaçları
+.. Kişisel Kullanım
+.. Internet Sunucusu
+.. Ağ Elemanı
+
+. Yazılım Özellikleri
+.. Temel Komutlar
+... *pwd*
+Terminali ilk açtığımız zaman, giriş yapmış olduğunuz kullanıcının home dosyasında başlar. Eğer hangi dosyanın içinde olduğumuzu bilmek istiyorsak “pwd” komutunu yazarız. Bu komutun çıktısı bize roottan başlayarak tam hangi klasörde olduğumuzu gösterir. Root Linux bir sistemin temelidir. Root, eğik bir çizgi ile gösterilir(/).
+... *ls*
+“ls” komutu, bulunduğunuz dizindeki hangi dosyaların olduğunu bilmek için kullanılır. “Ls –a” komutunu kullanarak ta tüm gizli dosyaları görebilirsiniz.
+... *cd*
+“cd”, bir dizine gitmek için kullanılan komuttur. Örneğin, Home klasöründeyseniz ve Downloads klasörüne gitmek istiyorsanız, “cd Downloads” yazabilirsiniz. Unutmayın ki bu komut büyük / küçük harfe duyarlıdır ve klasörün adını tam olarak olduğu gibi yazmanız gerekir. Bulunduğunuz klasörden geri dönmek veya bir üst klasöre çıkmak istiyorsanız “cd ..” komutu kullanılır.
+... *mkdir & rmdir*
+“mkdir” komutu, bir klasör veya dizin oluşturmanız gerektiğinde kullanılır. Örneğin “ TEST” adlı bir dizin yapmak istiyorsanız “mkdir TEST” komutunu yazabilirsiniz. “rmdir” bir dizini silmek için kullanılan komuttur. Ancak, rmdir yalnızca boş bir dizini silmek için kullanılabilir. İçi dolu bir klasörü silmek istiyorsanız komutu “rm –r klasörünadı” şeklinde kullanmanız gerekir.
+[WARNING]
+Temel  komutlar linux  terminali için önemlidir. Detaylıca  öğrenilmesi gerekir. 
+
+. Linux ve Diğer İşletim Sistemleri
+Linux ve diğer işletim sistemleri arasındaki ilişkiyi, benzerlikleri ve farklılıkları bilmek önemlidir. Linux işletim sistemi, diğer sistemler ile birlikte aynı sabit diski paylaşabilir. UNIX'i öğrenmek için kesinlikle en kolay ve ucuz yol olan Linux, diğer işletim sistemlerine karşı her zaman güçlü bir alternatif olmaktadır. Internet servis sağlayıcılarının büyük çoğunluğu, Linux kullanmakta, Internet bağlantılarını, e-posta ve haber grubu alış-verişini Linux sayesinde yapmaktadır.
+[CAUTION]
+Linux işletim sisteminin güvenilir ve sağlam yapısından haberdar olmayan, hatta bu gerçeği bilerek ücretli sistemlerdem medet uman kişiler vardır. Sabit fikirli olmadan önce bu sistem hakkında daha fazla verinin dağıtılması, kullanıcıların bilinçlendirilmesi gereklidir. Bu da ancak, Linux'un yapabildiklerini göstermekle olabilir.
+
+. Nereden Linux Bulabilirim?
+
+Linux işletim sistemiminin temelini oluşturan çekirdek, bu çekirdeğin kullandığı destek kütüphaneleri ve uygulama yazılımları bir araya getirilerek, yükleme yazılımları da eklenerek Linux dağıtımları meydana getirilmektedir. Bu dağıtımlar temel olarak bir kullanıcının Linux kullanmak için ihtiyaç duyabileceği bir çok yazılımı bir araya getirirler. Bu dağıtımların çoğu Internet üzerinde anonim FTP arşivlerinde bulunabilmektedirler. Internet erişimi bulunmayan kişilerinde (veya Internet'ten 120 Mbyte kopyalamak istemeyen kişilerin) yararlanabilmesi için çesitli CD-ROM şirketleri tarafından CD-ROM üzerinde dağıtımlar meydana getirilmiştir.
+Linux dağıtımları ve bunların nereden temin edilebileceği hakkında ayrıntılı bilgi, http://www.belgeler.org/lis/archive-tlkg-lis-2.html[Linux Kurulumu ve Başlangıç] başlığı altında bulunabilir.
+
+== Programlama Dilleri
+Aşağıdaki tabloda  programlama dilleri kullanılma oranı verilmiştir.
+
+. Programlama Dilleri Verilen  Tablo
+|========================================
+|Programlama Dili  |Kullanılma  Oranı
+|Python            |%55     
+|C                 |%52     
+|C++               |%57     
+|Java              |%40
+|========================================
+image::indir2.jpg[500,500]
+
+Tabloda  verilen verilere  göre  en çok kullanılan Programlama dili olan *C++* ın kullanımı aşağıdaki gibidir. 
+[source,c++]
+----
+    void hello();
+----
+
+Deataylı  C++ dersleri için 
+
+video::UpQdjipl2OE[youtube] 
+
+izleyin. 
+
+[source,bash]
+----
+    pwd
+    cd
+    history
+----
+
+Başa dönek için <<Başlangıç>> tıklayın
