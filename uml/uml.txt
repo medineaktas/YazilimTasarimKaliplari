@@ -1,0 +1,14 @@
+@startuml
+
+class insan{}
+class canlı{
+    +void yürü();
+}
+class hayvan{}
+class kedi{}
+
+canlı <|-- insan: Inheritance
+canlı <|-- hayvan: Inheritance
+hayvan <|-- kedi: Inheritance
+
+@enduml
