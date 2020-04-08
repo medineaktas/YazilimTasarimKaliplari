@@ -1,0 +1,181 @@
+[plantuml, diagram-classes, png]
+--
+@startuml
+left to right direction
+
+
+Class Musteri
+{
+    -musteriID
+}
+
+Class Kadın
+Class Erkek
+
+Class Siparişler {
+    -Urunler
+    -Bağımlılıklar
+    +FiyatHesapla()
+    }
+    
+Class OdemeSistemleri {
+    -OdemeTuru
+    -Fatura
+    +öde()
+    }
+    
+Class Degişim {
+    -urunKodu
+    -faturaBilgisi
+    +geriOdeme()
+    }
+    
+
+    
+Class Ödeme{
+  -sepetTutarı
+  +musteriID
+  -hesapla()
+  -onay():bool
+}
+
+    
+
+    
+
+
+Class Para{
+  
+}
+
+Kadın..|>Musteri : realization
+Erkek..|>Musteri : realization
+Musteri-->Siparişler : <<Sipariş>> : assocation
+Siparişler"1" *-- "1"Ödeme : composition
+
+OdemeSistemleri <|.. "<<use>>" Ödeme 
+Degişim --o Siparişler  : aggregation 
+OdemeSistemleri <|.. "<<bind>>" Para
+
+Siparişler - Urunler1
+SingletonÖdemePaneli - OdemeSistemleri
+
+
+class SingletonÖdemePaneli {
+	- {static} instance : SingletonÖdemePaneli
+	+ {static} getInstance() : SingletonÖdemePaneli
+	- SingletonÖdemePaneli() : void
+}
+
+
+class Urunler1 {
+    öde()
+  }
+
+class elektronik {
+    -elektronik()
+    +void öde()
+  }
+class gıda {
+    -gıda()
+    +void öde()
+  }
+class giyim {
+    -giyim()
+    +void öde()
+  }
+Urunler1 <|..elektronik : Implementa
+Urunler1 --> elektronik :  UrunlerFactoryMethod Regresa Producto
+Urunler1 <|..gıda : Implementa
+Urunler1 --> gıda :  UrunlerFactoryMethod Regresa Producto
+Urunler1 <|..giyim : Implementa
+Urunler1 --> giyim :  UrunlerFactoryMethod Regresa Producto
+
+
+@enduml
+--  
+
+[source, java]
+----
+public interface Urunler1 { // <1>
+   void öde();
+}
+
+public class elektronik implements Urunler1 {  // <2>
+
+   @Override
+   public void öde() {
+      System.out.println("öde()  metodu için %18 kdv   eklencek"); // <3>
+   }
+}
+
+public class gıda implements Urunler1 {
+
+   @Override
+   public void öde() {
+       System.out.println("öde()  metodu için %15 kdv eklencek");
+   }
+}
+
+public class giyim implements Urunler1 {
+
+   @Override
+   public void öde() {
+       System.out.println("öde()  metodu için %10 kdv eklencek");
+   }
+}
+
+public class UrunlerFactoryMethod { // <4>
+	
+   public Urun UrunGetir(String urunType){
+      if(urunType == null){
+         return null;
+      }		
+      if(urunType.equalsIgnoreCase("elektronik")){
+         return new elektronik();   } 
+      else if(urunType.equalsIgnoreCase("gıda")){
+         return new gıda();
+         
+      } else if(urunType.equalsIgnoreCase("giyim")){
+         return new giyim();
+      }
+      
+      return null;
+   }
+}
+
+----
+<1> nesnelere ait aynı görevi yerine getirip farklı şekilde hesaplayan(ortak özellik) fonksiyonların yazıldığı yerler
+<2> interface  in implement edilmesi Interface sınıfında sadece method tanımları bulunur. İçlerine kod parçacığı yazılmaz. İçerisinde tanımlanan method tanımları bu interface’i implemente edecek diğer sınıflar tarafından implement edilmesi zorunludur.
+<3> implement  edilen türe özgü metodun özelleştirilmesi
+<4> seçilen nesne  türüne  göre  instance nın yaratılması
+
+
+[source, java]
+----
+public class SingletonÖdemePaneli  
+{ 
+
+  private static SingletonÖdemePaneli; // <1>
+  
+  private SingletonÖdemePaneli()  ; // <2>
+  { 
+  } 
+  
+  synchronized public static SingletonÖdemePaneli getInstance ()  // <3>
+  { 
+    if (instance == null)  // <4> 
+    { 
+      instance = new SingletonÖdemePaneli();  // <5>
+    } 
+    return instance; 
+  } 
+} 
+----
+<1> private değişmeyen değişken oluşturma
+<2> Private Constructor
+<3> Aynı anda  threadler erişmek isteyince threadleri senkron edip public metodu global instanca erişim sağlamak
+<4> nesne oluşmadıysa nesne oluşturmak
+<5> nesneyi dödürmek 
+
+
