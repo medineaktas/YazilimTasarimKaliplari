@@ -1,0 +1,67 @@
+[plantuml, diagram-classes, png]
+--
+@startuml
+left to right direction
+
+
+class Pizza {
+    
+    -  hamur :String
+    -  sos :String
+    -  malzeme : String
+    -  ektraSos : String
+    }
+
+
+abstract class PizzaBuilder {
+    #  Pizza pizza
+
+    +  Pizza getPizza() 
+    
+
+    +   createNewPizzaProduct() 
+
+
+    +  buildHamur()
+    +  buildSos()
+    +  buildMalzeme()
+    +  buildExtraSos()
+    
+}
+
+class HawaiianPizzaBuilder extends PizzaBuilder {
+
+
+}
+
+class SpicyPizzaBuilder extends PizzaBuilder {
+}
+
+class Waiter {
+   - PizzaBuilder pizzaBuilder;
+
+    - setPizzaBuilder(PizzaBuilder pb) :void()
+
+    - Pizza getPizza() 
+    
+    -  constructPizza() :void
+       
+    
+
+
+}
+
+Waiter o-- PizzaBuilder
+
+Pizza   <|.. HawaiianPizzaBuilder
+
+Pizza  <|.. SpicyPizzaBuilder 
+
+@enduml
+--
+
+
+
+
+
+ 
