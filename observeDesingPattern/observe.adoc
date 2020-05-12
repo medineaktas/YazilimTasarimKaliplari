@@ -1,0 +1,61 @@
+[plantuml, diagram-classes, png]
+--
+@startuml
+left to right direction
+package Observer{
+     interface Subject
+     interface Observer
+    class MyTopicSubscriber 
+    class MyTopic
+}
+
+interface Subject {
+
+
++ register(Observer obj)
++ unregister(Observer obj)
+	
++ notifyObservers()
+	
++ Object getUpdate(Observer obj)
+	
+}
+
+interface Observer {
+	
++ update()
+	
++ setSubject(Subject sub)
+}
+ 
+
+class MyTopic  {
+
++  List<Observer> observers
++  message :String
++  changed  : boolean
++ final Object MUTEX  new Object()
+	
++  MyTopic()
+	
++  postMessage(String msg)
+		
+}
+
+class MyTopicSubscriber 
+{
+	
+- String name
+- Subject topic
++ MyTopicSubscriber(String nm)	
+
+}
+
+Observer <|.. MyTopicSubscriber
+Subject  <|.. MyTopic 
+Observer -> MyTopic : dependcy
+Subject -> MyTopicSubscriber : dependcy
+
+
+@enduml
+--
