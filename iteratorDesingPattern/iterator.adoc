@@ -1,0 +1,59 @@
+[plantuml, diagram-classes, png]
+--
+@startuml
+left to right direction
+
+
+class TVKanali {
++ String kanalAdi
+    
++ TVKanali (String kanalAdi)
+    
+    }
+    
+interface IKanalIterator{
+    
++ TVKanali Next()
+    
++ TVKanali gecerliKanal()
+    
++ bittiMi(): boolean
+   
+    }
+    
+interface IKanalAggregate{
+
++ IKanalIterator getIterator()
+   
+    }
+
+
+
+class KanalConcerteAggragete 
+ {
+- List<TVKanali> 
+
+
++int getKanalSayisi() 
+    
++ Add (TVKanali t)
+  
++ TVKanali GetItem(int index)
+
+ }
+ 
+class KanalConcereteIterator {
+-  int  index
+- KanalConcerteAggragete kanallar 
++ KanalConcereteIterator(KanalConcerteAggragete kanal)
+    }
+
+KanalConcerteAggragete ..|> IKanalAggregate
+KanalConcereteIterator ..|> IKanalIterator
+KanalConcerteAggragete ->KanalConcereteIterator : dependcy
+TVKanali -> KanalConcerteAggragete :dependcy
+
+IKanalAggregate <- IKanalIterator :dependcy
+
+@enduml
+--
